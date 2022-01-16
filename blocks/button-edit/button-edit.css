@@ -1,0 +1,15 @@
+.button-edit {
+  width: 24px;
+  height: 24px;
+  padding: auto;
+  border: 1px solid white;
+  background-color: black;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 740px) {
+  .button-edit {
+    width: 18px;
+    height: 18px;
+  }
+}
