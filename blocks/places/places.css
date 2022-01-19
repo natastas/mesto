@@ -1,5 +1,5 @@
 .places {
-  margin: 47px auto 67px;
+  margin: 50px auto 67px;
   display: grid;
   gap: 17px;
   grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
@@ -20,6 +20,9 @@
 
 @media screen and (max-width: 540px) {
   .places {
+    margin-top: 38px;
+    margin-bottom: 45px;
     padding: 0 19px;
+    gap: 20px;
   }
 }

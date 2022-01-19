@@ -10,7 +10,6 @@
 @media screen and (max-width: 740px) {
   .profile__navigation {
     align-items: center;
-    width: 100%;
-    gap: 14px;
+    gap: 10px;
   }
 }
