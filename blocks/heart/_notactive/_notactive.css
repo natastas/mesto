@@ -1,7 +1,0 @@
-.heart_notactive {
-  background-image: url(../../../images/heart.svg);
-}
-
-.heart_notactive:hover {
-  opacity: 0.4;
-}
