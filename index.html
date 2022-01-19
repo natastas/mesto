@@ -3,89 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css">
+    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
 <body>
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.png" alt="Логотип">
-      <div class="header__line"></div>  
+      <img class="header__logo" src="./images/logo.svg" alt="Логотип">
     </header>
     <main class="content">
       <section class="profile">
         <img class="profile__photo" src="./images/avatar.jpg" alt="Аватар">
         <div class="profile__navigation">
-        <div>
-        <div class="profile__edit">
-          <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button type="button" class="button button-edit">
-            <img class="button-edit__image" src="./images/Vector.png" alt="Кнопка">
-          </button>
-        </div>
+          <div class="profile__edit">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__button-edit"></button>
+          </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button type="button" class="button button-add">
-          <img class="button-add__image" src="./images/Vector2.png" alt="Кнопка">
-        </button>
-      </div>
+        <button type="button" class="profile__button-add"></button>
       </section>
-      <div class="places">
+      <section class="places">
         <div class="place">
           <img class="place__image" src="./images/nature-1.jpg" alt="Красная Поляна">
           <div class="place__basement">
-            <p class="place__subtitle">Красная Поляна</p>
-            <button class="heart heart_notactive" type="button"></button>
+            <h2 class="place__subtitle">Красная Поляна</h2>
+            <button class="place__heart" type="button"></button>
           </div>
         </div>
         <div class="place">
           <img class="place__image" src="./images/nature-2.jpg" alt="Малый Ахун">
           <div class="place__basement">
-            <p class="place__subtitle">Малый Ахун</p>
-            <button class="heart heart_notactive" type="button"></button>
+            <h2 class="place__subtitle">Малый Ахун</h2>
+            <button class="place__heart" type="button"></button>
           </div>
         </div>
         <div class="place">
           <img class="place__image" src="./images/nature-3.jpg" alt="РозаХутор">
           <div class="place__basement">
-            <p class="place__subtitle">Роза Хутор</p>
-            <button class="heart heart_notactive" type="button"></button>
+            <h2 class="place__subtitle">Роза Хутор</h2>
+            <button class="place__heart" type="button"></button>
           </div>
         </div>
         <div class="place">
           <img class="place__image" src="./images/nature-4.jpg" alt="ЭстоСадок">
           <div class="place__basement">
-            <p class="place__subtitle">Эсто-Садок</p>
-            <button class="heart heart_notactive" type="button"></button>
+            <h2 class="place__subtitle">Эсто-Садок</h2>
+            <button class="place__heart" type="button"></button>
           </div>
         </div>
         <div class="place">
           <img class="place__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
           <div class="place__basement">
-            <p class="place__subtitle">Карачаевск</p>
-            <button class="heart heart_notactive" type="button"></button>
+            <h2 class="place__subtitle">Карачаевск</h2>
+            <button class="place__heart" type="button"></button>
           </div>
         </div>
         <div class="place">
           <img class="place__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
           <div class="place__basement">
-            <p class="place__subtitle">Гора Эльбрус</p>
-            <button class="heart heart_notactive" type="button"></button>
+            <h2 class="place__subtitle">Гора Эльбрус</h2>
+            <button class="place__heart" type="button"></button>
           </div>
         </div>
-      </div>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__author">&copy; 2022 <a href="#" class="footer__link">Anuprienko Stanislav</a></p>
     </footer>
     <div class="popup">
       <div class="popup__container">
-        <form class="popup__body">
+        <form name="popup" class="popup__body">
           <button type="button" class="popup__close"></button>
-          <div class="popup__title">Редактировать профиль</div>
-          <input placeholder="Имя" id="nameInput" type="text" class="popup__text">
-          <input placeholder="О себе" id="jobInput" type="text" class="popup__text">
-          <button class="popup__button">Сохранить</button>
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <input placeholder="Имя" name="nameInput" id="nameInput" type="text" class="popup__text">
+          <input placeholder="О себе" name="jobInput" id="jobInput" type="text" class="popup__text">
+          <button type="submit" class="popup__button">Сохранить</button>
         </form>
       </div>
     </div>
