@@ -16,7 +16,7 @@ function popupClose() {
 };
 
 function formSubmitHandler (evt) {
-	evt.preventDefault(); 
+  evt.preventDefault(); 
   name.textContent = nameInput.value;
   job.textContent = jobInput.value;
   popupClose();
