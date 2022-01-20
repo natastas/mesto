@@ -27,8 +27,8 @@ openPopup.addEventListener('click', popupOpen);
 closePopup.addEventListener('click', popupClose);
 
 formElement.addEventListener('submit', formSubmitHandler);
-
-/* let hearts = document.querySelectorAll('.place__heart');
+/* 
+let hearts = document.querySelectorAll('.place__heart');
 hearts.forEach(function(entry) {
   entry.onclick = function(event) {
     event.preventDefault();
