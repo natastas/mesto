@@ -16,10 +16,9 @@
     background-size: 22px 22px;
     border-radius: 2px;
     cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 35px;
-  } 
+    margin-left: auto;
+    margin-top: 35px;
+    } 
   
   .profile__button-add:hover {
     opacity: 0.6;
@@ -29,7 +28,7 @@
     .profile__button-add {
       background-size: 16px 16px;
       width: 282px;
-      margin-top: 31px;
+      margin: 31px 19px 0;
       position: relative;
       top: auto;
       right: auto;
