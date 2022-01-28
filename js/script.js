@@ -42,7 +42,6 @@ const initialCards = [
 let card = document.querySelector('.template-place').content; 
 let div = document.querySelector('.places');
 
-
 initialCards.forEach(function (element) {
   const cards = card.cloneNode(true);
   cards.querySelector('.place__subtitle').textContent = element.name;
@@ -51,7 +50,7 @@ initialCards.forEach(function (element) {
   div.append(cards);
 });
 
-//ВАДОС, тут я пытаюсь сделать так, чтобы карточка добавлялась
+/* //ВАДОС, тут я пытаюсь сделать так, чтобы карточка добавлялась
 function formSubmitAdd(event) {
   event.preventDefault();
   const DataForms = [{name: titleInput.value, link: linkInput.value}];
@@ -61,12 +60,12 @@ function formSubmitAdd(event) {
   popupClosePlace(event);
 }
 formElementAdd.addEventListener('submit', formSubmitAdd);
+
 //Вадос тут я пытаюсь сделать так, чтобы карточка удалялась
 function deleteCard(event) {
   event.currentTarget.closest('.template-place').remove();
 }
-del.addEventListener('click', deleteCard);
-
+del.addEventListener('click', deleteCard);  */
 
 //Открываем и закрываем попАп профиля
 function popupOpenProfile() {
@@ -91,9 +90,6 @@ function popupClosePlace() {
   popupPlace.classList.remove('popup_opened');
 };
 closePopupPlace.addEventListener('click', popupClosePlace);
-
-
-
 
 //Сохраняем форму нажатием кнопки "Сохранить"
 function formSubmitHandler (evt) {
