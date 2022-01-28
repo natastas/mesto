@@ -24,48 +24,16 @@
         <button type="button" class="profile__button-add"></button>
       </section>
       <section class="places">
+        <template class="template-place">
         <div class="place">
-          <img class="place__image" src="./images/nature-1.jpg" alt="Красная Поляна">
+          <img class="place__image" src="" alt="">
           <div class="place__basement">
-            <h2 class="place__subtitle">Красная Поляна</h2>
+            <h2 class="place__subtitle"></h2>
             <button class="place__heart" type="button"></button>
           </div>
+          <button class="place__delete" type="button"></button>
         </div>
-        <div class="place">
-          <img class="place__image" src="./images/nature-2.jpg" alt="Малый Ахун">
-          <div class="place__basement">
-            <h2 class="place__subtitle">Малый Ахун</h2>
-            <button class="place__heart" type="button"></button>
-          </div>
-        </div>
-        <div class="place">
-          <img class="place__image" src="./images/nature-3.jpg" alt="РозаХутор">
-          <div class="place__basement">
-            <h2 class="place__subtitle">Роза Хутор</h2>
-            <button class="place__heart" type="button"></button>
-          </div>
-        </div>
-        <div class="place">
-          <img class="place__image" src="./images/nature-4.jpg" alt="ЭстоСадок">
-          <div class="place__basement">
-            <h2 class="place__subtitle">Эсто-Садок</h2>
-            <button class="place__heart" type="button"></button>
-          </div>
-        </div>
-        <div class="place">
-          <img class="place__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-          <div class="place__basement">
-            <h2 class="place__subtitle">Карачаевск</h2>
-            <button class="place__heart" type="button"></button>
-          </div>
-        </div>
-        <div class="place">
-          <img class="place__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-          <div class="place__basement">
-            <h2 class="place__subtitle">Гора Эльбрус</h2>
-            <button class="place__heart" type="button"></button>
-          </div>
-        </div>
+        </template>
       </section>
     </main>
     <footer class="footer">
@@ -80,6 +48,24 @@
           <input placeholder="О себе" name="jobInput" id="jobInput" type="text" class="popup__text">
           <button type="submit" class="popup__button">Сохранить</button>
         </form>
+      </div>
+    </div>
+    <div class="popup popup_place">
+      <div class="popup__container">
+        <form name="popup" class="popup__body popup__body_add">
+          <button type="button" class="popup__close popup__close_place"></button>
+          <h3 class="popup__title">Новое место</h3>
+          <input placeholder="Название" name="titleInput" id="titleInput" type="text" class="popup__text">
+          <input placeholder="Ссылка на картинку" name="linkInput" id="linkInput" type="text" class="popup__text">
+          <button type="submit" class="popup__button">Создать</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_image">
+      <div class="popup__container">
+        <button type="button" class="popup__close popup__close_place"></button>
+        <img class="popup__image" src="">
+        <h3 class="popup__title"></h3>       
       </div>
     </div>
   </div>
