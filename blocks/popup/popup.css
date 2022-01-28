@@ -9,6 +9,6 @@
   opacity: 0;
   transition: 1s;
   display: flex;
-  align-items: flex;
+  align-items: center;
   justify-content: center;
 }
