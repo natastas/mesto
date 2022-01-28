@@ -22,6 +22,7 @@
 @import url(../blocks/place/__image/place__image.css);
 @import url(../blocks/place/__subtitle/place__subtitle.css);
 @import url(../blocks/place/__basement/place__basement.css);
+@import url(../blocks/place/__delete/place__delete.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);
 @import url(../blocks/footer/__link/footer__link.css);
