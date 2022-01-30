@@ -1,14 +1,22 @@
-let popupProfile = document.querySelector('.popup');
-let openPopupProfile = document.querySelector('.profile__button-edit');
-let closePopupProfile = document.querySelector('.popup__close');
-let name = document.querySelector('.profile__title');
-let job = document.querySelector('.profile__subtitle');
-let formElement = document.querySelector('.popup__body');
-let popupPlace = document.querySelector('.popup_place');
-let openPopupPlace = document.querySelector('.profile__button-add');
-let closePopupPlace = document.querySelector('.popup__close_place');
-
-
+const popupProfile = document.querySelector('.popup');
+const openPopupProfile = document.querySelector('.profile__button-edit');
+const closePopupProfile = document.querySelector('.popup__close');
+const name = document.querySelector('.profile__title');
+const job = document.querySelector('.profile__subtitle');
+const formElement = document.querySelector('.popup__body');
+const popupPlace = document.querySelector('.popup_place');
+const openPopupPlace = document.querySelector('.profile__button-add');
+const closePopupPlace = document.querySelector('.popup__close_place');
+const template = document.querySelector('.template-place').content;
+const box = document.querySelector('.places__box');
+const inputPlace = document.querySelector('.popup__text_place');
+const inputLink = document.querySelector('.popup__text_link');
+const formElementAdd = document.querySelector('.popup__body_add');
+const popupImage = document.querySelector('.popup_image');
+const popupPhoto = document.querySelector('.popup__image');
+const placeImage = document.querySelector('.place__image');
+const popupTitle = document.querySelector('.popup__subtitle');
+const closePopupImage = document.querySelector('.popup__close-image');
 const initialCards = [
   {
     name: 'Архыз',
@@ -35,13 +43,7 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-const template = document.querySelector('.template-place').content;
-const box = document.querySelector('.places__box');
-const inputPlace = document.querySelector('.popup__text_place');
-const inputLink = document.querySelector('.popup__text_link');
-const formElementAdd = document.querySelector('.popup__body_add');
-
+//Добавляем форму добавления новой карточки
 function render() {
   initialCards.forEach(renderItem);
 };
@@ -53,6 +55,11 @@ function renderItem(text){
   newItem.querySelector('.place__delete').addEventListener('click', function(event) {
     event.target.closest('.place').remove();
   });
+  newItem.querySelector('.place__image').addEventListener('click', function (openPopupImage) {
+    popupImage.classList.add('popup_opened');
+    popupPhoto.src = text.link;
+    popupTitle.textContent = text.name;
+  });
   box.append(newItem);
 };
 
@@ -63,20 +70,12 @@ function addCard(event) {
 }
 formElementAdd.addEventListener('submit', addCard);
 
-render()
-
-const popupImage = document.querySelector('.popup_image');
-const popupPhoto = document.querySelector('.popup__image');
-const placeImage = document.querySelector('.place__image');
-const popupTitle = document.querySelector('.popup__title');
-
-function openPopupImage(text) {
-  popupImage.classList.add('popup_opened');
-  popupPhoto.src = text.link;
-  popupTitle.textContent = text.name;
+function popupCloseImage() {
+  popupImage.classList.remove('popup_opened');
 };
-placeImage.addEventListener('click', () => openPopupImage(text));
+closePopupImage.addEventListener('click', popupCloseImage);
 
+render()
 
 //Открываем и закрываем попАп профиля
 function popupOpenProfile() {
