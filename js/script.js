@@ -7,9 +7,7 @@ let formElement = document.querySelector('.popup__body');
 let popupPlace = document.querySelector('.popup_place');
 let openPopupPlace = document.querySelector('.profile__button-add');
 let closePopupPlace = document.querySelector('.popup__close_place');
-let formElementAdd = document.querySelector('.popup__body_add')
 
-let del = document.querySelector('.place__delete');
 
 const initialCards = [
   {
@@ -38,34 +36,47 @@ const initialCards = [
   }
 ];
 
-//Добавляем данные из массива в HTML
-let card = document.querySelector('.template-place').content; 
-let div = document.querySelector('.places');
+const template = document.querySelector('.template-place').content;
+const box = document.querySelector('.places__box');
+const inputPlace = document.querySelector('.popup__text_place');
+const inputLink = document.querySelector('.popup__text_link');
+const formElementAdd = document.querySelector('.popup__body_add');
 
-initialCards.forEach(function (element) {
-  const cards = card.cloneNode(true);
-  cards.querySelector('.place__subtitle').textContent = element.name;
-  cards.querySelector('.place__subtitle').alt = element.name;
-  cards.querySelector('.place__image').src = element.link;
-  div.append(cards);
-});
+function render() {
+  initialCards.forEach(renderItem);
+};
 
-/* //ВАДОС, тут я пытаюсь сделать так, чтобы карточка добавлялась
-function formSubmitAdd(event) {
+function renderItem(text){
+  const newItem = template.cloneNode(true);
+  newItem.querySelector('.place__subtitle').textContent = text.name;
+  newItem.querySelector('.place__image').src = text.link;
+  newItem.querySelector('.place__delete').addEventListener('click', function(event) {
+    event.target.closest('.place').remove();
+  });
+  box.append(newItem);
+};
+
+function addCard(event) {
   event.preventDefault();
-  const DataForms = [{name: titleInput.value, link: linkInput.value}];
-  DataForms.forEach(evt);
-  titleInput.value = '';
-  linkInput.value = '';
-  popupClosePlace(event);
+  renderItem({name: inputPlace.value, link: inputLink.value});
+  popupClosePlace();
 }
-formElementAdd.addEventListener('submit', formSubmitAdd);
+formElementAdd.addEventListener('submit', addCard);
 
-//Вадос тут я пытаюсь сделать так, чтобы карточка удалялась
-function deleteCard(event) {
-  event.currentTarget.closest('.template-place').remove();
-}
-del.addEventListener('click', deleteCard);  */
+render()
+
+const popupImage = document.querySelector('.popup_image');
+const popupPhoto = document.querySelector('.popup__image');
+const placeImage = document.querySelector('.place__image');
+const popupTitle = document.querySelector('.popup__title');
+
+function openPopupImage(text) {
+  popupImage.classList.add('popup_opened');
+  popupPhoto.src = text.link;
+  popupTitle.textContent = text.name;
+};
+placeImage.addEventListener('click', () => openPopupImage(text));
+
 
 //Открываем и закрываем попАп профиля
 function popupOpenProfile() {
@@ -106,9 +117,8 @@ hearts.forEach(function(entry) {
   entry.onclick = function(event) {
     event.preventDefault();
     entry.classList.toggle('place__heart_active');
-    entry.classList.toggle('place__heart_notactive');
   };
-});
+}); 
 
 /* document.addEventListener('keydown', function(ee) {
   if (ee.key === 'Escape') {
