@@ -30,21 +30,21 @@
     <footer class="footer">
       <p class="footer__author">&copy; 2022 <a href="#" class="footer__link">Anuprienko Stanislav</a></p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_profile">
       <div class="popup__container">
-        <form name="popup" class="popup__body">
+        <form name="popup" class="popup__body ~">
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
-          <input placeholder="Имя" name="nameInput" id="nameInput" type="text" class="popup__text">
-          <input placeholder="О себе" name="jobInput" id="jobInput" type="text" class="popup__text">
+          <input name="nameInput" type="text" class="popup__text popup__text_name" value="Жак-Ив Кусто">
+          <input name="jobInput" type="text" class="popup__text_job" value="Исследователь океана">
           <button type="submit" class="popup__button">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="popup popup_place">
+    <div class="popup popup_type_card-add">
       <div class="popup__container">
-        <form name="popup" class="popup__body popup__body_add">
-          <button type="button" class="popup__close popup__close_place"></button>
+        <form name="popup" class="popup__body popup__body_type_card-add">
+          <button type="button" class="popup__close popup__close_type_card-add"></button>
           <h3 class="popup__title">Новое место</h3>
           <input placeholder="Название" name="titleInput" id="titleInput" type="text" class="popup__text popup__text_place">
           <input placeholder="Ссылка на картинку" name="linkInput" id="linkInput" type="text" class="popup__text popup__text_link">
@@ -52,9 +52,9 @@
         </form>
       </div>
     </div>
-    <div class="popup popup_image">
-      <div class="popup__container-image">
-        <button type="button" class="popup__close popup__close-image"></button>
+    <div class="popup popup_type_picture">
+      <div class="popup__box">
+        <button type="button" class="popup__close popup__close_type_picture"></button>
         <img class="popup__image" src="#">
         <h3 class="popup__subtitle"></h3>       
       </div>
@@ -70,6 +70,7 @@
       <button class="place__delete" type="button"></button>
     </li>
   </template>
-  <script defer src="./js/script.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 </html>
