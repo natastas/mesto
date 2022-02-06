@@ -3,23 +3,22 @@ const openPopupProfile = document.querySelector('.profile__button-edit');
 const closePopupProfile = document.querySelector('.popup__close');
 const names = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
-const formElement = document.querySelector('.popup__body_type_profile');
 const popupPlace = document.querySelector('.popup_type_card-add');
 const openPopupPlace = document.querySelector('.profile__button-add');
 const closePopupPlace = document.querySelector('.popup__close_type_card-add');
 const template = document.querySelector('.template-place').content;
 const box = document.querySelector('.places__box');
-const inputPlace = document.querySelector('.popup__text-place');
-const inputLink = document.querySelector('.popup__text-link');
-const inputJob = document.querySelector('.popup__text-job');
-const inputName = document.querySelector('.popup__text-name');
-const formElementAdd = document.querySelector('.popup__body_type_card-add');
 const popupImage = document.querySelector('.popup_type_picture');
 const popupPhoto = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__subtitle');
 const closePopupImage = document.querySelector('.popup__close_type_picture');
+const inputPlace = document.querySelector('.popup__input-place');
+const inputLink = document.querySelector('.popup__input-link');
+const inputJob = document.querySelector('.popup__input-job');
+const inputName = document.querySelector('.popup__input-name');
+const formElementAdd = document.querySelector('.popup__body_type_card-add');
+/* const formElementProfile = document.querySelector('.popup__body_type_profile'); */
 
-//Добавляем форму добавления новой карточки
 initialCards.forEach(renderCard);
 
 function renderCard(cardItem) {
@@ -89,13 +88,45 @@ function formSubmitHandler(event) {
   popupCloseProfile();
 };
 
+const formElement = document.querySelector('.popup__body_type_profile');
+const formInput = formElement.querySelector('.popup__input-name');
+const formError = formElement.querySelector(`.${formInput.id}-error`);
+// Слушатель события input
+// Функция, которая добавляет класс с ошибкой
+const showInputError = (element) => {
+  element.classList.add('popup__input_type_error');
+  formError.classList.add('popup__input-error_active');
+};
+// Функция, которая удаляет класс с ошибкой
+const hideInputError = (element) => {
+  element.classList.remove('popup__input_type_error');
+  formError.classList.remove('popup__input-error_active');
+};
+// Функция, которая проверяет валидность поля
+const isValid = () => {
+  if (!formInput.validity.valid) {
+    // Если поле не проходит валидацию, покажем ошибку
+    showInputError(formInput);
+  } else {
+    // Если проходит, скроем
+    hideInputError(formInput);
+  }
+};
+formElement.addEventListener('submit', function (evt) {
+  // Отменим стандартное поведение по сабмиту
+  evt.preventDefault();
+});
+// Вызовем функцию isValid на каждый ввод символа
+formInput.addEventListener('input', isValid); 
+console.log(formInput.id);
+
 openPopupProfile.addEventListener('click', popupOpenProfile);
 closePopupImage.addEventListener('click', popupCloseImage);
 closePopupProfile.addEventListener('click', popupCloseProfile);
 openPopupPlace.addEventListener('click', popupOpenPlace);
 closePopupPlace.addEventListener('click', popupClosePlace);
 formElementAdd.addEventListener('submit', addCard);
-formElement.addEventListener('submit', formSubmitHandler);
+/* formElementProfile.addEventListener('submit', formSubmitHandler); */
 
 /* document.addEventListener('keydown', function(ee) {
   if (ee.key === 'Escape') {
