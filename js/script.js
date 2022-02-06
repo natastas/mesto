@@ -127,7 +127,7 @@ const setEventListeners = (formElement) => {
   inputList.forEach((inputElement) => {
     // каждому полю добавим обработчик события input
     inputElement.addEventListener('input', () => {
-      // Внутри колбэка вызовем isValid,
+      // Внутри колбэка вызовем checkInputValidity,
       // передав ей форму и проверяемый элемент
       checkInputValidity(formElement, inputElement)
     });
@@ -154,7 +154,7 @@ const enableValidation = () => {
 
 // Вызовем функцию
 enableValidation(); 
-// Вызовем функцию isValid на каждый ввод символа
+
 
 openPopupProfile.addEventListener('click', popupOpenProfile);
 closePopupImage.addEventListener('click', popupCloseImage);
@@ -162,7 +162,7 @@ closePopupProfile.addEventListener('click', popupCloseProfile);
 openPopupPlace.addEventListener('click', popupOpenPlace);
 closePopupPlace.addEventListener('click', popupClosePlace);
 formElementAdd.addEventListener('submit', addCard);
-formElementProfile.addEventListener('submit', formSubmitHandler);
+/* formElementProfile.addEventListener('submit', formSubmitHandler); */
 
 /* document.addEventListener('keydown', function(ee) {
   if (ee.key === 'Escape') {
