@@ -27,15 +27,6 @@
         <ul class="places__box"></ul>
       </section>
     </main>
-
-     <form class="popup__body" novalidate>
-      <input id="email-input" class="popup__input" type="email" placeholder="Email" required>
-      <span class="email-input-error popup__input-error"></span>
-      <input id="password-input" class="popup__input" type="password" placeholder="Password" required minlength="6">
-      <span class="password-input-error popup__input-error"></span>
-    <button class="popup__submit">Войти</button>
-  </form> 
-
     <footer class="footer">
       <p class="footer__author">&copy; 2022 <a href="#" class="footer__link">Anuprienko Stanislav</a></p>
     </footer>
@@ -45,9 +36,9 @@
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
           <input name="" type="text" id="name-input" class="popup__input popup__input-name" value="Жак-Ив Кусто" required minlength="2" maxlength="40">
-          <span class="name-input-error popup__input-error">Вы пропустили это поле</span>
+          <span class="name-input-error popup__input-error"></span>
           <input name="" type="text" id="job-input" class="popup__input popup__input-job" value="Исследователь океана" required minlength="2" maxlength="200">
-          <span class="job-input-error popup__input-error">Вы пропустили это поле</span>
+          <span class="job-input-error popup__input-error"></span>
           <button type="submit" class="popup__button">Сохранить</button>
         </form>
       </div>
@@ -83,7 +74,8 @@
       <button class="place__delete" type="button"></button>
     </li>
   </template>
-  <script src="js/cards.js"></script>
+  <script src="./js/cards.js"></script>
+  <script src="./js/validate.js"></script>
   <script src="./js/script.js"></script>
 </body>
 </html>
