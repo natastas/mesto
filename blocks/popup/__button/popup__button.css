@@ -1,9 +1,9 @@
 .popup__button {
   background-color: black;
   color: white;
-  max-width: 358px;
+  width: 358px;
   border: none;
-  margin-top: 20px;
+  margin-top: 45px;
   padding: 14px 124px 18px;
   font-size: 18px;
   line-height: 22px;
@@ -12,6 +12,8 @@
   transition: 1s;
   opacity: 1;
   border-radius: 2px;
+  position: absolute;
+  bottom: 0;
 }
 
 .popup__button:hover {
@@ -24,5 +26,5 @@
     padding: 14px 82px;
     font-size: 14px;
     line-height: 17px;
-    }
+  }
 }
