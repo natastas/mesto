@@ -71,9 +71,8 @@ function OpenPopupProfile() {
 };
 
 function OpenPopupPlace() {
-  formElementAdd.reset();
   openPopup(popupPlace);
-  
+  checkingFormFill(popupPlace)
 };
 
 function ClosePopupProfile() {
