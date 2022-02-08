@@ -2,9 +2,12 @@
   position: relative;
   background-color: white;
   color: black;
-  max-width: 282px;
+  width: 282px;
   min-height: 362px;
   border-radius: 10px;
   margin: auto;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 } 
