@@ -49,7 +49,7 @@ function createCard(cardItem){
 function addCard(event) {
   event.preventDefault();
   renderCard({name: inputPlace.value, link: inputLink.value});
-  ClosePopupPlace();
+  closePopupPlace();
 };
 
 function openPopup(popup) {
@@ -64,26 +64,28 @@ function closePopup(popup) {
   removePopupClickOverlay();
 };
 
-function OpenPopupProfile() {
+function openPopupProfile() {
   openPopup(popupProfile);
   inputName.value = names.textContent;
   inputJob.value = job.textContent; 
 };
 
-function OpenPopupPlace() {
+function openPopupPlace() {
   openPopup(popupPlace);
-  checkingFormFill(popupPlace)
+  checkingFormFill(popupPlace);
+  formElementAdd.reset();
 };
 
-function ClosePopupProfile() {
+function closePopupProfile() {
   closePopup(popupProfile);
 };
 
-function ClosePopupPlace() {
+function closePopupPlace() {
   closePopup(popupPlace);
+  formElementAdd.reset();
 };
 
-function ClosePopupImage() {
+function closePopupImage() {
   closePopup(popupImage);
 };
 
@@ -124,10 +126,10 @@ function closeByOverlay (evt) {
   }
 }
 
-popupProfileOpenButton.addEventListener('click', OpenPopupProfile);
-popupImageCloseButton.addEventListener('click', ClosePopupImage);
-popupProfileCloseButton.addEventListener('click', ClosePopupProfile);
-popupPlaceOpenButton.addEventListener('click', OpenPopupPlace);
-popupPlaceCloseButton.addEventListener('click', ClosePopupPlace);
+popupProfileOpenButton.addEventListener('click', openPopupProfile);
+popupImageCloseButton.addEventListener('click', closePopupImage);
+popupProfileCloseButton.addEventListener('click', closePopupProfile);
+popupPlaceOpenButton.addEventListener('click', openPopupPlace);
+popupPlaceCloseButton.addEventListener('click', closePopupPlace);
 formElementAdd.addEventListener('submit', addCard);
 formElementProfile.addEventListener('submit', submitProfileForm);
