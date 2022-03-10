@@ -48,8 +48,7 @@ export class FormValidator {
         if (!this._hasInvalidInput()) {
             this._activationButton();
         } else {
-          
-          this.deactivationButton();
+            this.deactivationButton();
         };
       };
 
@@ -65,7 +64,7 @@ export class FormValidator {
     resetErrors() {
         this._form.reset();
         this._inputList.forEach(() => {
-            this._checkInputValidity(inputElement);
+            this._hideInputError();
         });
         this._toggleButtonState();
     }
