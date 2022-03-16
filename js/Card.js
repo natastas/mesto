@@ -1,11 +1,9 @@
-import { popupPhoto, popupTitle, openPopup, popupImage } from './script.js';
-
 export class Card {
-  constructor(data, cardTemplateSelector) {
+  constructor(data, cardTemplateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._template = document.querySelector(cardTemplateSelector).content.querySelector('.place');
-
+    this._handleCardClick = handleCardClick;
   };
 
   _handleLikeIcon = () =>  {
@@ -16,19 +14,14 @@ export class Card {
     this._newItem.remove();
   };
 
-  _openPopupImage = () => {
-    popupPhoto.src = this._link;
-    popupPhoto.alt = this._name;
-    popupTitle.textContent = this._name;
-    openPopup (popupImage);
-  };
-
   _setEventListeners() {
     const deleteButton = this._newItem.querySelector('.place__delete');
 
     deleteButton.addEventListener('click', this._handleDeleteCard);
     this._likeButton.addEventListener('click', this._handleLikeIcon);
-    this._newImage.addEventListener('click', this._openPopupImage);
+    this._newImage.addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link)
+    });
   }
 
   createCard() {
