@@ -1,0 +1,6 @@
+.place__basement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 15px 22px 21px;
+}
