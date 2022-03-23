@@ -60,7 +60,6 @@ popupProfileOpenButton.addEventListener('click', () => {
 
 const profileValidator = new FormValidator(validationConfig, formElementProfile);
 const cardValidator = new FormValidator(validationConfig, formElementAdd);
-
 const section = new Section({items: initialCards, renderer: renderCard}, '.places__box');
 const imagePopup = new PopupWithImage('.popup_type_picture');
 const addCardPopup = new PopupWithForm('.popup_type_card-add', handleCardSubmit);
@@ -69,7 +68,6 @@ const userInfo = new UserInfo({profileNameSelector: '.profile__title', profileJo
 
 cardValidator.enableValidation();
 profileValidator.enableValidation();
-
 section.renderItems()
 imagePopup.setEventListeners()
 addCardPopup.setEventListeners()
