@@ -20,23 +20,21 @@ export class Card {
     deleteButton.addEventListener('click', this._handleDeleteCard);
     this._likeButton.addEventListener('click', this._handleLikeIcon);
     this._newImage.addEventListener('click', () => {
-      this._handleCardClick(this._name, this._link)
+      this._handleCardClick();
     });
   }
 
-  createCard() {
+  getView() {
     this._newItem = this._template.cloneNode(true);
     this._likeButton = this._newItem.querySelector('.place__heart');
     this._newImage = this._newItem.querySelector('.place__image');
     
     this._newItem.querySelector('.place__subtitle').textContent = this._name;
-    this._newImage.src = this._link;
-    this._newImage.alt = this._name;
+  this._newImage.src = this._link;
+    this._newImage.alt = this._name;  
 
     this._setEventListeners();
 
-
     return this._newItem;
   }
-
 }
