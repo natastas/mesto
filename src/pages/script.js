@@ -18,9 +18,9 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 
-const renderCard = (data, box) => {
+const renderCard = (data) => {
   const card = createCard(data);
-  box.prepend(card);
+  section.addItem(card);
 }
 
 const createCard = (data) => {
@@ -38,10 +38,7 @@ function submitProfileForm(data) {
 };
 
 function handleCardSubmit (data) {
-  const card = createCard({
-    name: data['titleInput'], 
-    link: data['linkInput']
-  });
+
   section.addItem(card);
   addCardPopup.close();
 };
