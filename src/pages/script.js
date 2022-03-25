@@ -38,7 +38,7 @@ function submitProfileForm(data) {
 };
 
 function handleCardSubmit (data) {
-
+  const card = createCard(data);
   section.addItem(card);
   addCardPopup.close();
 };
