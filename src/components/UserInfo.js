@@ -16,7 +16,7 @@ export class UserInfo {
     setUserInfo(title, job, avatar) {
         this._nameElement.textContent = title
         this._jobElement.textContent = job
-        this._avatar.url = avatar
+        this._avatar.link = avatar
     }
 
 }

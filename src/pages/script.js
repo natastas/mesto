@@ -38,7 +38,7 @@ api.getInitialCards()
         id: data._id,
         userId: userId,
         ownerId: data.owner._id,
-        
+        avatar: data.avatar
       })
       section.addItem(card)
     })
@@ -105,7 +105,7 @@ const handleCardSubmit = (data) => {
       id: res._id,
       userId: userId,
       ownerId: res.owner._id,
-      
+      avatar: res.avatar
     });
     section.addItem(card);
     addCardPopup.close();
@@ -129,7 +129,6 @@ let urlAvatar;
 function updateAvatar (data) {
   api.editAvatar(data.link)
   .then((res) => {
-    console.log('res', res);
     urlAvatar = res.avatar;
     userInfo.setUserInfo(res.name, res.link, res.avatar)
     avatarPopup.close()
