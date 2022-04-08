@@ -1,0 +1,6 @@
+.popup__body_type_delete-card {
+    display: grid;
+    
+    height: 181px;
+    gap: 0;
+}
