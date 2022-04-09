@@ -12,9 +12,7 @@
     </header>
     <main class="content">
       <section class="profile">
-        <div class="profile__photo-container">
-          <img class="profile__photo" src="<%=require('./images/avatar.jpg')%>" alt="Аватар">
-        </div>
+        <div class="profile__photo"></div>
         <div class="profile__navigation">
           <div class="profile__edit">
             <h1 class="profile__title"></h1>
@@ -71,7 +69,8 @@
         <button type="button" class="popup__close popup__close_type_avatar"></button>
         <form name="popup-cards" class="popup__body popup__body_type_avatar" novalidate>
           <h3 class="popup__title">Обновить аватар</h3>
-          <input placeholder="Название" name="name" id="place-input" type="text" class="popup__input popup__input-place" required minlength="1" maxlength="30">
+          <input placeholder="Ссылка на картинку" name="avatar" id="avatar-input" type="url" class="popup__input popup__input-avatar" required>
+          <span class="popup__input-error avatar-input-error">Сообщение об ошибке</span>
           <button type="submit" class="popup__button popup__button_avatar">Сохранить</button>
         </form>
       </div>
@@ -97,3 +96,5 @@
   </template>
 </body>
 </html>
+
+<!-- <img class="profile__photo" src="<%=require('./images/avatar.jpg')%>" alt="Аватар"> -->

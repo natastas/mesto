@@ -9,14 +9,14 @@ export class UserInfo {
         return {
             name: this._nameElement.textContent,
             job: this._jobElement.textContent,
-            
+            avatar: this._avatar.url,
         }
     }
 
     setUserInfo(title, job, avatar) {
-        this._nameElement.textContent = title
-        this._jobElement.textContent = job
-        this._avatar.link = avatar
+        this._nameElement.textContent = title;
+        this._jobElement.textContent = job;
+        this._avatar.src = avatar;
     }
 
 }

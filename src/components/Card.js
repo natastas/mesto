@@ -66,4 +66,4 @@ export class Card {
     
     return this._newItem;
   }
-}
+} 
