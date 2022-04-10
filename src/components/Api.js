@@ -4,11 +4,18 @@ class Api {
     this._baseUrl = baseUrl; 
   }
 
+  _getResponseData(res) {
+    if (!res.ok) {
+        return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
+} 
+
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .then(this._getResponseData)
       
   }
 
@@ -16,7 +23,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then(this._getResponseData)
      
   }
 
@@ -29,7 +36,7 @@ class Api {
         about,
       }),
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then(this._getResponseData)
      
   }
 
@@ -42,7 +49,7 @@ class Api {
         link,
       }),
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then(this._getResponseData)
       
   }
 
@@ -51,7 +58,7 @@ class Api {
       method: "DELETE",
       headers: this._headers
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then(this._getResponseData)
       
   }
 
@@ -60,7 +67,7 @@ class Api {
       method: "DELETE",
       headers: this._headers
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then(this._getResponseData)
       
   }
 
@@ -69,7 +76,7 @@ class Api {
       method: "PUT",
       headers: this._headers
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then(this._getResponseData)
      
   }
   
@@ -81,7 +88,7 @@ class Api {
         avatar
       })
     })
-    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then(this._getResponseData)
     
   }  
 }

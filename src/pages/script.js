@@ -33,6 +33,7 @@ api.getProfile()
 
 api.getInitialCards()
   .then(cardList => {
+    cardList.reverse();
     cardList.forEach(data => {
       const card = createCard({
         name: data.name,
@@ -108,6 +109,7 @@ function createCard(data) {
         .then(res => {
           card.setLikes(res.likes)
         })
+        .catch(console.log)
       } else {
         api.addLike(id)
         .then(res => {
