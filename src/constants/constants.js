@@ -9,7 +9,7 @@
   
   export const popupProfileOpenButton = document.querySelector('.profile__button-edit');
   export const popupPlaceOpenButton = document.querySelector('.profile__button-add');
-  export const popupAvatarOpenButton = document.querySelector('.profile__photo');
+  export const popupAvatarOpenButton = document.querySelector('.profile__photo-container');
   export const inputJob = document.querySelector('.popup__input-job');
   export const inputName = document.querySelector('.popup__input-name');
   export const formElementAdd = document.querySelector('.popup__body_type_card-add');

@@ -32,11 +32,5 @@ export class Popup {
         })
     }
 
-    renderLoading(isLoading) {
-        if (isLoading) {
-          this._submitButton.textContent = 'Сохранение...';
-        } else {
-          this._submitButton.textContent = this._initButtonText;
-        }
-      }
+    
 }

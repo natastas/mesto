@@ -9,7 +9,7 @@ class Api {
       headers: this._headers,
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+      
   }
 
   getInitialCards() {
@@ -17,7 +17,7 @@ class Api {
       headers: this._headers,
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+     
   }
 
   editProfile(name, about) {
@@ -30,7 +30,7 @@ class Api {
       }),
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+     
   }
 
   addCard(name, link) {
@@ -43,7 +43,7 @@ class Api {
       }),
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+      
   }
 
   deleteCard(id) {
@@ -52,7 +52,7 @@ class Api {
       headers: this._headers
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+      
   }
 
   deleteLike(id) {
@@ -61,7 +61,7 @@ class Api {
       headers: this._headers
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+      
   }
 
   addLike(id) {
@@ -70,10 +70,10 @@ class Api {
       headers: this._headers
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+     
   }
   
-  updateAvatar(avatar) {
+   updateAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
@@ -82,9 +82,8 @@ class Api {
       })
     })
     .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-    .catch(console.log);
-  } 
-
+    
+  }  
 }
 
 export const api = new Api({
@@ -92,5 +91,5 @@ export const api = new Api({
   headers: {
     authorization: "fdb704ba-0bbd-4733-b11d-72b3d08c51f5",
     "Content-Type": "application/json",
-  },
-});
+  }
+})

@@ -26,9 +26,10 @@ let urlAvatar;
 api.getProfile()
   .then((res) => {
     userInfo.setUserInfo(res.name, res.about, res.avatar)
+    urlAvatar = res.avatar;
     userId = res._id;
-    
   })
+  .catch(console.log);
 
 api.getInitialCards()
   .then(cardList => {
@@ -45,6 +46,7 @@ api.getInitialCards()
       section.addItem(card)
     })
   })
+  .catch(console.log);
 
   const profileValidator = new FormValidator(validationConfig, formElementProfile);
   const cardValidator = new FormValidator(validationConfig, formElementAdd);
@@ -64,8 +66,8 @@ popupProfileOpenButton.addEventListener('click', () => {
 
 popupPlaceOpenButton.addEventListener('click', () => {
   cardValidator.deactivationButton();
+  cardValidator.resetErrors();
   addCardPopup.open();
-  cardValidator.resetErrors()
 });
 
 const submitProfileForm = (data) => {
@@ -73,12 +75,16 @@ const submitProfileForm = (data) => {
   editProfilePopup.renderLoading(true);
   api.editProfile(nameInput, jobInput) 
     .then(() => {
-      userInfo.setUserInfo(nameInput, jobInput);
+      userInfo.setUserInfo(nameInput, jobInput, urlAvatar);
       editProfilePopup.close();
+    })
+    .catch(console.log)
+    .finally(() => {
+      editProfilePopup.renderLoading(false);
     });
 };
 
-const createCard = (data) => {
+function createCard(data) {
   const card = new Card(
     data,
     '#template-place',
@@ -93,6 +99,7 @@ const createCard = (data) => {
           card.deleteCard()
           confirmPopup.close()
         })
+        .catch(console.log)
       });
     },
     (id) => {
@@ -106,6 +113,7 @@ const createCard = (data) => {
         .then(res => {
           card.setLikes(res.likes)
         })
+        .catch(console.log)
       }
     }
   )
@@ -113,17 +121,20 @@ const createCard = (data) => {
  return card.getView();
 }
 
-const renderCard = (data) => {
+const section = new Section({ 
+  items: [], 
+  renderer: (data) => {
   const card = createCard(data);
   section.addItem(card);
-}
-
-const section = new Section({ items: [], renderer: renderCard }, '.places__box');
+} 
+}, 
+'.places__box'
+);
 
 function handleCardSubmit(data) {
   addCardPopup.renderLoading(true);
   api.addCard(data.name, data.link)
-  .then(res => {
+  .then((res) => {
     const card = createCard({
       name: res.name,
       link: res.link,
@@ -136,6 +147,10 @@ function handleCardSubmit(data) {
     section.addItem(card);
     addCardPopup.close();
   })
+  .catch(console.log)
+    .finally(() => {
+      addCardPopup.renderLoading(false);
+    });
 };
 
 const imagePopup = new PopupWithImage('.popup_type_picture');
@@ -143,19 +158,23 @@ const addCardPopup = new PopupWithForm('.popup_type_card-add', handleCardSubmit)
 const editProfilePopup = new PopupWithForm('.popup_type_profile', submitProfileForm);
 const confirmPopup = new PopupWithForm('.popup_type_delete-card');
 
-function submitEditAvatarForm (data) {
+ function submitEditAvatarForm (avatar) {
   avatarPopup.renderLoading(true);
   
-  api.updateAvatar(data.link)
+  api.updateAvatar(avatar.link)
   
   .then((res) => {
-    console.log('res', res)
+    
     userInfo.setUserInfo(res.name, res.about, res.avatar);
-    urlAvatar = res.avatar;
+    
     avatarPopup.close();
   })
+  .catch(console.log)
+    .finally(() => {
+      avatarPopup.renderLoading(false);
+    });
  
-} 
+}  
 
 const avatarPopup = new PopupWithForm('.popup_type_avatar', submitEditAvatarForm);
 
