@@ -20,8 +20,28 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { api } from "../components/Api.js";
 
+const profileValidator = new FormValidator(validationConfig, formElementProfile);
+const cardValidator = new FormValidator(validationConfig, formElementAdd);
+const avatarValidator = new FormValidator(validationConfig, formElementAvatar); 
+
 let userId;
 let urlAvatar;
+
+const userInfo = new UserInfo({
+  profileNameSelector: '.profile__title', 
+  profileJobSelector: '.profile__subtitle', 
+  profileAvatarSelector: '.profile__photo' 
+});
+
+const section = new Section({ 
+  items: [], 
+  renderer: (data) => {
+  const card = createCard(data);
+  section.addItem(card);
+} 
+}, 
+'.places__box'
+);
 
 api.getProfile()
   .then((res) => {
@@ -49,13 +69,43 @@ api.getInitialCards()
   })
   .catch(console.log);
 
-  const profileValidator = new FormValidator(validationConfig, formElementProfile);
-  const cardValidator = new FormValidator(validationConfig, formElementAdd);
-  const avatarValidator = new FormValidator(validationConfig, formElementAvatar); 
-
-cardValidator.enableValidation();
-profileValidator.enableValidation();
-avatarValidator.enableValidation() 
+  function createCard(data) {
+    const card = new Card(
+      data,
+      '#template-place',
+      () => {
+        imagePopup.open(data.name, data.link)
+      }, 
+      (id) => {
+        confirmPopup.open()
+        confirmPopup.changeSubmitHandler(() => {
+          api.deleteCard(id)
+          .then(res => {
+            card.deleteCard()
+            confirmPopup.close()
+          })
+          .catch(console.log)
+        });
+      },
+      (id) => {
+        if(card.isLiked()) {
+          api.deleteLike(id)
+          .then(res => {
+            card.setLikes(res.likes)
+          })
+          .catch(console.log)
+        } else {
+          api.addLike(id)
+          .then(res => {
+            card.setLikes(res.likes)
+          })
+          .catch(console.log)
+        }
+      }
+    )
+   
+   return card.getView();
+  }
 
 popupProfileOpenButton.addEventListener('click', () => {
   const { name, job } = userInfo.getUserInfo();
@@ -71,9 +121,15 @@ popupPlaceOpenButton.addEventListener('click', () => {
   addCardPopup.open();
 });
 
-const submitProfileForm = (data) => {
+popupAvatarOpenButton.addEventListener('click', () => { 
+  avatarValidator.deactivationButton()
+  avatarValidator.resetErrors() 
+  avatarPopup.open();
+});
+
+function submitProfileForm(data) {
 	const {jobInput, nameInput} = data; 
-  editProfilePopup.renderLoading(true);
+  editProfilePopup.renderLoading(true)
   api.editProfile(nameInput, jobInput) 
     .then(() => {
       userInfo.setUserInfo(nameInput, jobInput, urlAvatar);
@@ -84,54 +140,6 @@ const submitProfileForm = (data) => {
       editProfilePopup.renderLoading(false);
     });
 };
-
-function createCard(data) {
-  const card = new Card(
-    data,
-    '#template-place',
-    () => {
-      imagePopup.open(data.name, data.link)
-    }, 
-    (id) => {
-      confirmPopup.open()
-      confirmPopup.changeSubmitHandler(() => {
-        api.deleteCard(id)
-        .then(res => {
-          card.deleteCard()
-          confirmPopup.close()
-        })
-        .catch(console.log)
-      });
-    },
-    (id) => {
-      if(card.isLiked()) {
-        api.deleteLike(id)
-        .then(res => {
-          card.setLikes(res.likes)
-        })
-        .catch(console.log)
-      } else {
-        api.addLike(id)
-        .then(res => {
-          card.setLikes(res.likes)
-        })
-        .catch(console.log)
-      }
-    }
-  )
- 
- return card.getView();
-}
-
-const section = new Section({ 
-  items: [], 
-  renderer: (data) => {
-  const card = createCard(data);
-  section.addItem(card);
-} 
-}, 
-'.places__box'
-);
 
 function handleCardSubmit(data) {
   addCardPopup.renderLoading(true);
@@ -150,43 +158,35 @@ function handleCardSubmit(data) {
     addCardPopup.close();
   })
   .catch(console.log)
-    .finally(() => {
+  .finally(() => {
       addCardPopup.renderLoading(false);
-    });
+  });
 };
+
+function submitEditAvatarForm (data) {
+  avatarPopup.renderLoading(true);
+  api.updateAvatar(data.link)
+  .then((res) => {
+    userInfo.setUserInfo(res.name, res.about, res.avatar);
+    avatarPopup.close();
+  })
+  .catch(console.log)
+  .finally(() => {
+      avatarPopup.renderLoading(false);
+  });
+}  
 
 const imagePopup = new PopupWithImage('.popup_type_picture');
 const addCardPopup = new PopupWithForm('.popup_type_card-add', handleCardSubmit);
 const editProfilePopup = new PopupWithForm('.popup_type_profile', submitProfileForm);
 const confirmPopup = new PopupWithForm('.popup_type_delete-card');
-
- function submitEditAvatarForm (avatar) {
-  avatarPopup.renderLoading(true);
-  
-  api.updateAvatar(avatar.link)
-  
-  .then((res) => {
-    
-    userInfo.setUserInfo(res.name, res.about, res.avatar);
-    
-    avatarPopup.close();
-  })
-  .catch(console.log)
-    .finally(() => {
-      avatarPopup.renderLoading(false);
-    });
- 
-}  
-
 const avatarPopup = new PopupWithForm('.popup_type_avatar', submitEditAvatarForm);
 
-popupAvatarOpenButton.addEventListener('click', () => { 
-  avatarValidator.deactivationButton()
-  avatarValidator.resetErrors() 
-  avatarPopup.open();
-});
-
 section.renderItems();
+
+cardValidator.enableValidation();
+profileValidator.enableValidation();
+avatarValidator.enableValidation() 
 
 imagePopup.setEventListeners();
 addCardPopup.setEventListeners();
@@ -194,8 +194,4 @@ editProfilePopup.setEventListeners();
 confirmPopup.setEventListeners();
 avatarPopup.setEventListeners();
 
-const userInfo = new UserInfo({
-  profileNameSelector: '.profile__title', 
-  profileJobSelector: '.profile__subtitle', 
-  profileAvatarSelector: '.profile__photo' 
-});
+

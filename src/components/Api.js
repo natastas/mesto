@@ -16,7 +16,6 @@ class Api {
       headers: this._headers,
     })
       .then(this._getResponseData)
-      
   }
 
   getInitialCards() {
@@ -24,7 +23,6 @@ class Api {
       headers: this._headers,
     })
     .then(this._getResponseData)
-     
   }
 
   editProfile(name, about) {
@@ -37,7 +35,6 @@ class Api {
       }),
     })
     .then(this._getResponseData)
-     
   }
 
   addCard(name, link) {
@@ -49,8 +46,7 @@ class Api {
         link,
       }),
     })
-    .then(this._getResponseData)
-      
+    .then(this._getResponseData) 
   }
 
   deleteCard(id) {
@@ -67,8 +63,7 @@ class Api {
       method: "DELETE",
       headers: this._headers
     })
-    .then(this._getResponseData)
-      
+    .then(this._getResponseData) 
   }
 
   addLike(id) {
@@ -77,7 +72,6 @@ class Api {
       headers: this._headers
     })
     .then(this._getResponseData)
-     
   }
   
    updateAvatar(avatar) {
@@ -89,7 +83,6 @@ class Api {
       })
     })
     .then(this._getResponseData)
-    
   }  
 }
 
