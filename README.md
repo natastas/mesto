@@ -1,15 +1,18 @@
-# Project: Mesto
+# [MESTO](https://natastas.github.io/mesto/)
 
-["Mesto"](https://natastas.github.io/mesto/) is a project created as part of the training course "Web Developer". The single-page website is designed using HTML, CSS, JavaScript technologies, adapted to different screen formats. All forms are validated using JS. 
+"Mesto" - это проект, созданный в рамках обучения на курсе "Веб-разработчик". Одностраничный сайт сверстан с использованием технологий HTML, CSS, JavaScript, адаптирован под разные форматы экранов. Все формы валидируются при помощи JS. В проекте применены принципы объектно-ориентированного программирования.
 
-The user can change the profile data, add a new card with the name and photo of the place, delete an existing card, put a "Like" on the card, open the image in a larger format.
+На сайте пользователь может изменить данные профиля, добавить новую карточку с названием и фотографией места, удалить существующую карточку, поставить "Лайк" на карточку, открыть изображение в большем формате.
 
-### Stack:
-- Adaptive layout
+Реальзовано с помощью:
+
+### Стек технологий:
+- Адаптивная верстка
+- Медиа-запросы
 - Grid / Flex
-- BEM
+- БЭМ
 - Figma
-- OOP
+- ООП
 - Webpack
 
 ##
